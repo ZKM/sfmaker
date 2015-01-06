@@ -25,7 +25,7 @@ angular.module('sfmaker')
       }
     ];
 
-    $scope.strength = [
+    $scope.strengths = [
       {'name': 'Achiever'},
       {'name': 'Activator'},
       {'name': 'Adaptability'},
