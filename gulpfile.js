@@ -1,31 +1,9 @@
-var   gulp = require('gulp'),
-   connect = require('gulp-connect'),
-      sass = require('gulp-sass'),
-    uglify = require('gulp-uglify'),
- minifyCSS = require('gulp-minify-css');
+'use strict';
 
-gulp.task('connect', function() {
-  connect.server({
-    root: '',
-    livereload: true
-  });
+var gulp = require('gulp');
+
+require('require-dir')('./gulp');
+
+gulp.task('default', ['clean'], function () {
+    gulp.start('build');
 });
-
-gulp.task('html', function () {
-  gulp.src('./*.html')
-    .pipe(connect.reload());
-});
-
-gulp.task('sass', function () {
-    gulp.src('./css/*.scss')
-        .pipe(sass())
-        .pipe(minifyCSS({keepBreaks:false}))
-        .pipe(gulp.dest('./css'));
-});
-
-gulp.task('watch', function () {
-  gulp.watch(['./*.css'], ['css']),
-  gulp.watch(['./*.html'], ['html']);
-});
-
-gulp.task('default', ['connect', 'watch']);
